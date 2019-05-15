@@ -19,4 +19,11 @@ Print a message:
 "<telephone number> spent the longest time, <total time> seconds, on the phone during 
 September 2016.".
 """
+print(calls[0])
+times = int(calls[1][3])
+for i in range(len(calls)-1):
+    if times < int(calls[i+1][3]):
+        times = int(calls[i+1][3])
+        tel = calls[i+1][1]
 
+print(tel, "spent the longest time,", times,"seconds, on the phone during September 2016." )
