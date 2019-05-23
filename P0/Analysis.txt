@@ -1,0 +1,7 @@
+Task0: run time: O(1)
+Task1: run time: O(N+N) = O(N)
+Task2: run time:O(N)
+Task3: Part A run time: N+N+N+N+N+N+1= 6N  O(6N). since I used <sorted> function, the run time for this could be hard to
+       calculate for entire program.
+       Part B run time: O(2N) = O(N)
+Task4: run time: O(2N) = O(N)
