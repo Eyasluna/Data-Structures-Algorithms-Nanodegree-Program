@@ -27,3 +27,6 @@ for i in range(len(calls)-1):
         tel = calls[i+1][1]
 
 print(tel, "spent the longest time,", times,"seconds, on the phone during September 2016." )
+
+
+#run time:O(N)

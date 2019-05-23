@@ -3,6 +3,8 @@ Read file into texts and calls.
 It's ok if you don't understand how to read files.
 """
 import csv
+import re
+import itertools
 
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
@@ -43,3 +45,66 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+
+
+
+#Part A
+called_number = []
+area_num = []
+cell_num = []
+area_2 = []
+final_1 = []
+area3 = []
+for i in range(len(calls)-1):
+    if "(080)" in calls[i][0]:
+        called_number.append(calls[i][1])
+#get whole numbers called by 080
+
+
+for j in range(len(called_number)-1):
+    if "(" in called_number[j]:
+        area_num.append(called_number[j])
+#get fixed phone numbers from called numbers
+
+for elem in called_number:
+    if elem[0] == '7'or elem[0] == '8' or elem[0] == '9':
+        cell_num.append(elem)
+#get cell numbers from called numbers
+
+for keys in area_num:
+    keys = keys.strip()
+    p = r'\(.*?\)'
+    pattern = re.compile(p)
+    area_2.append(pattern.findall(keys))
+area_2 = set(list(itertools.chain(*area_2)))
+for ele in area_2:
+    area3.append(ele)
+#using regex to find area code from fixed numbers
+
+for mobile in cell_num:
+    final_1.append(mobile[:4])
+for area in area3:
+    final_1.append(area[1:-1])
+final_1.append('140')
+#collect all area number to one list
+
+final = sorted(set(final_1))
+# using set to remove duplicates.
+#since I called <sorted> here, the run time for this could be hard to
+#calculate for entire program
+print("The numbers called by people in Bangalore have codes:")
+
+for elem in final:
+    print(elem)
+# Part A run time: N+N+N+N+N+N+1= 6N  O(6N)
+
+
+#Part B
+fixed_line = []
+for a in range(len(called_number)-1):
+    if '(080)' in called_number[a]:
+        fixed_line.append(called_number[a])
+outcome = int((len(fixed_line)/len(called_number))*100)
+print(outcome,'percent of calls from fixed lines'
+              ' in Bangalore are calls to other fixed lines in Bangalore.')
+#run time: O(N)

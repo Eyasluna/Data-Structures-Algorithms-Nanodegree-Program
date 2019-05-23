@@ -33,3 +33,5 @@ set1 = set(list1)
 set2 = set(list2)
 count = len(set1)+ len(set2)
 print("There are", count, "different telephone numbers in the records.")
+
+#run time: O(N+N) = O(N)
