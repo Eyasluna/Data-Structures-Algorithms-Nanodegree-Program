@@ -104,7 +104,7 @@ fixed_line = []
 for a in range(len(called_number)-1):
     if '(080)' in called_number[a]:
         fixed_line.append(called_number[a])
-outcome = int((len(fixed_line)/len(called_number))*100)
+outcome = round((len(fixed_line)/len(called_number))*100,2)
 print(outcome,'percent of calls from fixed lines'
               ' in Bangalore are calls to other fixed lines in Bangalore.')
 #run time: O(N)
