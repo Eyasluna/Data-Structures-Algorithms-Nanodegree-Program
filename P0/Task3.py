@@ -85,7 +85,9 @@ for mobile in cell_num:
     final_1.append(mobile[:4])
 for area in area3:
     final_1.append(area[1:-1])
-final_1.append('140')
+
+if '140' in called_number[0:2]:
+    final_1.append('140')
 #collect all area number to one list
 
 final = sorted(set(final_1))
