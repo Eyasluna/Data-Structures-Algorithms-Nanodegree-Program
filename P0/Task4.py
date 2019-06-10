@@ -27,18 +27,22 @@ The list of numbers should be print out one per line in lexicographic order with
 call = []
 f_call = []
 final = []
+text1 = set()
+text2 = set()
 for i in range(len(calls)):
-    if calls[i][0] not in calls[i][1]:
+    if calls[i][0] not in calls[0:][1]:
         call.append(calls[i][0])
 
-
 for j in range(len(texts)):
-    for k in range(len(call)):
-        if call[k] not in texts[j][0] and texts[j][1]:
+    text1.add(texts[j][0])
+    text2.add(texts[j][1])
+
+for k in range(len(call)):
+    if call[k] not in text1 and call[k] not in text2:
             f_call.append(call[k])
+
 final = sorted(set(f_call))
 # using set to remove duplicates.
-
 
 print("These numbers could be telemarketers: ")
 for elem in final:

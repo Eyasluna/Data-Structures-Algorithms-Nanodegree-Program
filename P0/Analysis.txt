@@ -1,7 +1,16 @@
 Task0: run time: O(1)
+        One straight forward constant run time.
+
 Task1: run time: O(N+N) = O(N)
+        Two for loops. Counted as one O(N)
+
 Task2: run time:O(N)
-Task3: Part A run time: N+N+N+N+N+N+1= 6N  O(6N). since I used <sorted> function, the run time for this could be hard to
-       calculate for entire program.
-       Part B run time: O(2N) = O(N)
-Task4: run time: O(2N) = O(N)
+        One straight forward for loop.
+
+Task3: Part A run time: N+N+N+N+N+N+1+nlogn= 6N+ nlogn  O(nlogn).
+        Since I used sorted() function here so the run time for this part is O(nlogn)
+
+       Part B run time: O(N)
+
+Task4: run time:
+        Three for loops plus one sorted() function so the total run time is O(nlogn)
