@@ -32,14 +32,17 @@ text2 = set()
 for i in range(len(calls)):
     if calls[i][0] not in calls[0:][1]:
         call.append(calls[i][0])
+# get numbers that only make outgoing calls
 
 for j in range(len(texts)):
     text1.add(texts[j][0])
     text2.add(texts[j][1])
+# get text numbers into two lists
 
 for k in range(len(call)):
     if call[k] not in text1 and call[k] not in text2:
             f_call.append(call[k])
+# find the outgoing calls which not doing any text activities
 
 final = sorted(set(f_call))
 # using set to remove duplicates.
