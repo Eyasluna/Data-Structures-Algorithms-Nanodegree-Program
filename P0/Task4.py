@@ -24,27 +24,25 @@ Print a message:
 <list of numbers>
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
-call = []
-f_call = []
+
 final = []
 text1 = set()
 text2 = set()
-for i in range(len(calls)):
-    if calls[i][0] not in calls[0:][1]:
-        call.append(calls[i][0])
-# get numbers that only make outgoing calls
+call1 = set()
+call2 = set()
+
+for a in range(len(calls)):
+    call1.add(calls[a][0])
+    call2.add(calls[a][1])
+
 
 for j in range(len(texts)):
     text1.add(texts[j][0])
     text2.add(texts[j][1])
 # get text numbers into two lists
 
-for k in range(len(call)):
-    if call[k] not in text1 and call[k] not in text2:
-            f_call.append(call[k])
-# find the outgoing calls which not doing any text activities
 
-final = sorted(set(f_call))
+final = sorted(call1.difference(call2, text1, text2))
 # using set to remove duplicates.
 
 print("These numbers could be telemarketers: ")
