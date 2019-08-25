@@ -22,14 +22,14 @@ def huffman_decoding(data,tree):
     huffman = {}
     for items in tree:
         huffman[tree[items]] = items
-    temp = ''
+    group = ''
     decode = ''
     for item in data:
         if item == '1':
-            decode += huffman[temp + item]
+            decode += huffman[group + item]
             temp = ''
         else:
-            temp += item
+            group += item
     return decode
 
 if __name__ == "__main__":

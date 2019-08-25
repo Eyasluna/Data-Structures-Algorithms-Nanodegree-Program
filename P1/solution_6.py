@@ -41,39 +41,39 @@ class LinkedList:
 
         return size
 
-def union(llist_1, llist_2):
-    l = set()
-    current = llist_1.head
+def union(list1, list2):
+    new_set = set()
+    current = list1.head
     while current:
-        l.add(current.value)
+        new_set.add(current.value)
         current = current.next
-    current = llist_2.head
+    current = list2.head
     while current:
-        l.add(current.value)
-        current = current.next
-
-    result = LinkedList()
-    for num in l:
-        result.append(num)
-    return result
-
-def intersection(llist_1, llist_2):
-    l1 = set()
-    current = llist_1.head
-    while current:
-        l1.add(current.value)
-        current = current.next
-    l2 = set()
-    current = llist_2.head
-    while current:
-        l2.add(current.value)
+        new_set.add(current.value)
         current = current.next
 
-    l = l1.intersection(l2)
-    result = LinkedList()
-    for num in l:
-        result.append(num)
-    return result
+    output = LinkedList()
+    for a in new_set:
+        output.append(a)
+    return output
+
+def intersection(list1, list2):
+    input1 = set()
+    current = list1.head
+    while current:
+        input1.add(current.value)
+        current = current.next
+    list_3 = set()
+    current = list2.head
+    while current:
+        list_3.add(current.value)
+        current = current.next
+
+    list_new = input1.intersection(list_3)
+    output = LinkedList()
+    for items in list_new:
+        output.append(items)
+    return output
 
 # Test case 1
 

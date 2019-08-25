@@ -1,5 +1,5 @@
-I have written a recursive function for this question which takes input the suffix, path and the list of required files which are found till now. Each time I find a file ending with .c will be appended to this file.
+I used a recursive function to input the suffix on a separate function. 
 
-Run time complexity: O(depth X Avg. number of directoryin each level)
+Run time complexity: O(depth X)
 
 Space complexity: O(depth)
