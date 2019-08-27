@@ -1,5 +1,5 @@
 import os
-def find_files(suffix, path, file= []):
+def find_files(suffix, path):
     """
     Find all files beneath path with file name suffix.
 
@@ -15,16 +15,34 @@ def find_files(suffix, path, file= []):
     Returns:
        a list of paths
     """
+    if suffix == '':
+        return []
 
-    tem = suffix
-    if path:
-        tem = suffix + '/' + path
-    for item in os.listdir(tem):
-        tem1 = tem +  '/' + item
-        if os.path.isfile(tem1) and tem1.endswith(".c"):
-            file.append(tem1)
+    if len(os.listdir(path)) == 0:
+        return []
 
-        elif os.path.isdir(tem1):
-            file = find_files(tem, item, file)
-    return file
+    path_elem = os.listdir(path)
+    path_file = [item for item in path_elem if '.' + suffix in item]
+    path_folder = [item for item in path_elem if '.' not in item]
 
+    for item in path_folder:
+        path_file.extend(find_files(suffix=suffix, path=path + '/' + item))
+
+    return path_file
+
+
+path_base = os.getcwd() + '/testdir'
+
+# Normal Cases:
+print(find_files('c', path_base))
+# ['t1.c', 'a.c', 'a.c', 'b.c']
+
+print(find_files('h', path_base))
+# ['t1.h', 'a.h', 'a.h', 'b.h']
+
+print(find_files('z', path_base))
+# []
+
+# Edge Cases:
+print(find_files('', path_base))
+# []

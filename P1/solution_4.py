@@ -52,3 +52,18 @@ def is_user_in_group(user, group):
 
 
 
+# Normal Cases:
+print('Normal Cases:')
+print(is_user_in_group(user='parent_user', group=parent))
+# False
+print(is_user_in_group(user='child_user', group=parent))
+# False
+print(is_user_in_group(user='sub_child_user', group=parent), '\n')
+# True
+
+# Edge Cases:
+print('Edge Cases:')
+print(is_user_in_group(user='', group=parent))
+# False
+print(is_user_in_group(user='', group=child))
+# False
