@@ -5,33 +5,46 @@ It to support two operations, get and set
 The get operation should retrieve the value if the key exists, otherwise it should return -1 if it does not exist.
 The set operation will insert the value if the key is not present. If the cache is full then it should remove the oldest item before inserting a new item.
 '''
-from collections import deque
+from collections import OrderedDict
 
 class LRU_Cache(object):
 
     def __init__(self, capacity):
-       # Initialize class variables
-       self.cache_cap = capacity
-       self.cache_val = {}
-       self.cache_order = deque()
+        # Initialize class variables
+        self.cache = OrderedDict()
+        self.capacity = capacity
 
     def get(self, key):
-        # Retrieve item from provided key. Return -1 if non existant.
-        if key is None:
-            return -1
+        # Retrieve item from provided key. Return -1 if nonexistent.
 
-        return self.cache_val.get(key, -1)
+        try:  # If value in the cache
+
+            # Update priority due to access
+            value = self.cache.pop(key)
+            self.cache[key] = value
+            return value
+
+        except KeyError:
+            return -1
 
     def set(self, key, value):
         # Set the value if the key is not present in the cache. If the cache is at capacity remove the oldest item.
-        if self.cache_cap == 0:
+
+        if self.capacity == 0:
             print("Can't perform operations on 0 capacity cache")
             return
-        if len(self.cache_order) >= self.cache_cap:
-            del self.cache_val[self.cache_order.popleft()]
-        self.cache_order.append(key)
-        self.cache_val[key] = value
 
+        if key in self.cache:  # Update priority due to access
+            self.cache.pop(key)
+            self.cache[key] = value
+
+        else:  # Add to cache
+            if len(self.cache) < self.capacity:  # Still space on cache
+                self.cache[key] = value
+
+            else:  # No space available on cache
+                self.cache.popitem(last=False)
+                self.cache[key] = value
 
 our_cache = LRU_Cache(0)
 

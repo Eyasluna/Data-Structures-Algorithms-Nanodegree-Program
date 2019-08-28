@@ -1,6 +1,6 @@
-In this problem, I have implemented the recursion for finding the element. At each recursive step I have implemented following:
-First I have checked the name of the group whether it is same as the user I am looking for then I checked in the users list of that group. Then I went for its child groups.
-If at any point I find the user. I returned True but aafter checking all the groups and users, if I don't find the user. Then I returned
+The requirement to create an efficient algorithm that searches into this encapsulated structure, like a
+Matryoshka dolls as been satisfied by a __recursive algorithm__. 
 
-Time complexity: O(depth x no. of users)
-Space complexity: O(depth x no. of users)
+The time complexity of this algorithm is dependant on the number of iterations that are launched. Being in this case
+dependent on __encapsulation of groups__ and __number of users__ of folders, resulting in a __O(g*u)__. As for the 
+_space complexity_, it is directly dependent on the number of returns the function does, hence, in this case __O(1)__.
